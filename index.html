@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formation OSINT : enquêter avec des sources ouvertes</title>
+<meta name="description" content="Une formation pratique à l'OSINT : méthode, outils et cadre légal, à partir de cas concrets.">
+<style>
+:root{--bg:#f3f5f8;--fg:#0f1b2d;--muted:#4b5a70;--line:#d5dbe4;--panel:#fff;--accent:#1e40af;--accent-fg:#fff;--mark:#fbbf24;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1522;--fg:#e6ebf3;--muted:#9aa8bd;--line:#26334a;--panel:#141d2e;--accent:#7aa2ff;--accent-fg:#0a1226;--mark:#f5b83d}}
+:root[data-theme="dark"]{--bg:#0e1522;--fg:#e6ebf3;--muted:#9aa8bd;--line:#26334a;--panel:#141d2e;--accent:#7aa2ff;--accent-fg:#0a1226;--mark:#f5b83d}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:1.0625rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{width:min(68rem,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.12;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.2vw,3.7rem);letter-spacing:-.015em}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:1.5rem}
+h3{font-size:1.2rem;margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:62ch}
+.muted{color:var(--muted)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0}
+.brand{font-weight:700}
+.top a{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn{display:inline-block;padding:.85rem 1.5rem;background:var(--accent);color:var(--accent-fg);border-radius:6px;text-decoration:none;font-weight:600}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center;padding:3rem 0 4rem}
+.hero p.lead{font-size:1.2rem;margin:1.4rem 0 2rem;color:var(--muted)}
+.chain{list-style:none;margin:0;padding:1.6rem 1.6rem 1.6rem 2.2rem;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.chain li{position:relative;padding:0 0 1.4rem 1.4rem;border-left:2px solid var(--line)}
+.chain li:last-child{padding-bottom:0;border-left-color:transparent}
+.chain li::before{content:"";position:absolute;left:-7px;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.chain b{display:inline-block;font-size:1.1rem}
+.chain li:last-child b{background:var(--mark);color:#1a1200;padding:0 .35rem}
+.chain span{display:block;color:var(--muted);font-size:.95rem}
+.cap{margin:1rem 0 0;font-size:.95rem;color:var(--muted)}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.cols p{margin:0;color:var(--muted)}
+.prog{list-style:none;margin:0;padding:0;counter-reset:m}
+.prog li{counter-increment:m;display:grid;grid-template-columns:2.5rem 1fr;gap:.5rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.prog li:last-child{border-bottom:1px solid var(--line)}
+.prog li::before{content:counter(m);font-family:Georgia,serif;font-size:1.4rem;color:var(--accent)}
+.prog p{margin:0;color:var(--muted)}
+.cta{text-align:center}
+.cta p{margin-inline:auto}
+.cta .info{color:var(--muted);margin-bottom:1.8rem}
+.big{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(1.4rem,3.6vw,2.1rem);line-height:1.3;max-width:34ch;margin:3rem auto 0;text-wrap:balance}
+.big b{background:var(--mark);color:#1a1200;padding:0 .3rem;overflow-wrap:anywhere}
+.contact{margin-top:2.5rem;color:var(--muted);font-size:.95rem}
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:2rem;padding-top:1.5rem}.cols{grid-template-columns:1fr;gap:1.5rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap top"><span class="brand">Formation OSINT</span><a href="#inscription">S'inscrire</a></div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Apprenez à enquêter avec des sources ouvertes</h1>
+    <p class="lead">Une formation pratique à l'OSINT : une méthode rigoureuse, les bons outils et un cadre légal clair, sur des cas concrets.</p>
+    <a class="btn" href="#inscription">Réserver ma place</a>
+  </div>
+  <div>
+    <ol class="chain" aria-label="Exemple de piste d'enquête">
+      <li><b>Un pseudonyme</b><span>repéré dans un ancien forum</span></li>
+      <li><b>Un compte</b><span>même nom, autre plateforme</span></li>
+      <li><b>Une photo</b><span>un détail visible en arrière-plan</span></li>
+      <li><b>Un lieu</b><span>confirmé sur une image satellite</span></li>
+    </ol>
+    <p class="cap">Une enquête OSINT consiste à suivre le fil d'un indice à l'autre, et à tout vérifier.</p>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>Pour qui ?</h2>
+  <div class="cols">
+    <div><h3>Journalistes et chercheurs</h3><p>Vérifier une information et retrouver l'origine d'un contenu.</p></div>
+    <div><h3>Équipes sécurité et veille</h3><p>Cartographier une exposition publique et nourrir une analyse.</p></div>
+    <div><h3>Curieux et étudiants</h3><p>Acquérir une méthode solide, sans prérequis techniques.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Au programme</h2>
+  <ol class="prog">
+    <li><div><h3>Méthode d'enquête</h3><p>Cadrer une question, tenir un carnet de recherche, vérifier ses sources.</p></div></li>
+    <li><div><h3>Recherche avancée</h3><p>Opérateurs de recherche, archives du web, recherche d'images inversée.</p></div></li>
+    <li><div><h3>Réseaux sociaux et profils publics</h3><p>Recouper des informations publiques avec discernement.</p></div></li>
+    <li><div><h3>Images et géolocalisation</h3><p>Retrouver un lieu à partir d'une photo ou d'une vidéo.</p></div></li>
+    <li><div><h3>Sites, domaines et entreprises</h3><p>WHOIS, historique DNS, registres du commerce.</p></div></li>
+    <li><div><h3>Rapport et cadre légal</h3><p>RGPD, déontologie, rédaction de conclusions sourcées.</p></div></li>
+  </ol>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Un cadre clair</h2>
+  <p>Nous travaillons uniquement à partir de données publiques, dans le respect de la loi et de la vie privée. Chaque module rappelle ce qui est permis, ce qui ne l'est pas, et pourquoi.</p>
+</div></section>
+
+<section id="inscription" class="cta"><div class="wrap">
+  <h2>Rejoignez la formation</h2>
+  <p class="info">Tarif : 1 &euro;</p>
+  <a class="btn" href="https://www.paypal.me/VictorGac/1EUR" target="_blank" rel="noopener">Payer 1 &euro; avec PayPal</a>
+  <p class="big">Après votre achat, faites un enregistrement ou une capture d'écran de votre paiement et envoyez-le sur Discord à <b>haxki382</b> et <b>victor_beaugossefils</b>.</p>
+  <p class="contact">Une question ? Écris-moi : <a href="mailto:VxnityK@proton.me">VxnityK@proton.me</a></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">Formation OSINT &copy; 2026</div></footer>
+</body>
+</html>
